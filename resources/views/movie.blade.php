@@ -13,17 +13,20 @@
             <thead>
                 <tr>
                 <th>Title</th>
-                <th>Description</th>
-                <th>Author</th>
+                <th>Synopsis</th>
+                <th>Image</th>
+                <th>Release Date</th>
                 <th>Action</th>
                 </tr>
             </thead>
             <body>
-               @foreach($posts as $post)
+               @foreach($movies as $movie)
                <tr>
-                    <td>{{ $post->title }}</td>
-                    <td>{{ $post->description }}</td>
-                    <td>{{ $post->author }}</td>
+                    <td>{{ $movie->title }}</td>
+                    <td>{{ $movie->synopsis }}</td>
+                    <td>{{ $movie->director }}</td>
+                    <td>{{ $movie->image }}</td>
+                    <td>{{ $movie->dateRelease }}</td>
                     <td>
                         <button class="btn btn-danger">Delete</button>
                     </td>
@@ -34,7 +37,7 @@
                @endforeach
             </body>
         </table>
-        {{ $posts->links() }}
+        {{ $movies->links() }}
     </div>
 </body>
 </html>

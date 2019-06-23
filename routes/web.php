@@ -13,8 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/post', 'WelcomeController@postIndex');
+Route::get('/movie', 'MovieController@index');
 
-Route::get('/comment', 'WelcomeController@commentIndex');
+Route::get('/comment', 'CommentController@index');
 
-Route::get('/form', 'WelcomeController@formIndex');
+Route::get('/movie/form', 'MovieController@create');
+
+Route::post('/movie', 'MovieController@movieIndex')->name('movie.add');// Mempersingkat link

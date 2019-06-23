@@ -12,17 +12,5 @@ class WelcomeController extends Controller
         return view('welcome');
     }
 
-    public function postIndex(){
-        $posts = Post::paginate(6);
-        return view('post', compact('posts'));
-    }
-
-    public function commentIndex(){
-        $comments = Comment::paginate(6);
-        return view('comment', compact('comments'));
-    }
-
-    public function formIndex(){
-        return view('form');
-    }
+    
 }
