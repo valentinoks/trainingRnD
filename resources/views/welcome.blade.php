@@ -86,6 +86,8 @@
 
                 <div class="links">
                     <a href="{{ url('/movie') }}">Movies</a>
+                    <a href="{{ url('/comment') }}">Comments</a>
+                    <a href="{{ url('/comment/form') }}">Write Comment</a>
                     <a href="{{ url('/movie/form') }}">Create Post</a>
                 </div>
             </div>

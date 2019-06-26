@@ -17,17 +17,51 @@ class MovieController extends Controller
         return view('form');
     }
     public function movieIndex(MovieRequest $request){
-        Post::create([
+        Movie::create([
             'title'=>$request->title,
             'synopsis'=>$request->synopsis,
             'director'=>$request->director,
-            'image'=>$request->image,
+            'image'=>$this->uploadImage($request->file('image')),
+            'dateRelease'=>$request->dateRelease,
+            ]);
+
+        return redirect('/movie')->with('success', 'Success input post data');
+    }
+
+    public function uploadImage($image){
+        $fileNameWithExt = $image->getClientOriginalName();
+        $image->storeAs('public/images', $fileNameWithExt);
+        return $fileNameWithExt;
+    }
+
+    public function edit($id){
+        $movie = Movie::findOrFail($id);
+        return view('edit-movie', compact('movie'));
+    }
+
+    public function update(MovieRequest $request, $id){
+        Movie::findOrFail($id)->update([
+            'title'=>$request->title,
+            'synopsis'=>$request->synopsis,
+            'director'=>$request->director,
+            'image'=>$this->uploadImage($request->file('image')),
             'dateRelease'=>$request->dateRelease,
         ]);
-        return redirect('/movie')->with('success', 'Success input post data');
+        return redirect('/movie')->with('success', 'Success Update Movie Data');
+    }
+
+    public function delete($id){
+        //Movie::destroy($id);
+        $movie = Movie::findOrFail($id);
+        Storage::delete('public/images/'.$movie->image);
+        $movie->delete();
+        return back()->with('success', 'Success Delete Movie Data');
     }
     
 }
+
+
+
             /*$table->string('title');
             $table->string('synopsis');
             $table->string('director');

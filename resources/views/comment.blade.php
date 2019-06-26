@@ -23,7 +23,14 @@
                     <td>{{ $comment->user }}</td>
                     <td>{{ $comment->comment }}</td>
                     <td>
-                        <button class="btn btn-success">Reply Comment</button>
+                        <form action="{{route('comment.delete', $comment->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                     </td>
+                    <td>
+                        <a href="{{route('comment.edit', $comment->id)}}" class="btn btn-success">Edit</a>
                     </td>
                 </tr>
                @endforeach
