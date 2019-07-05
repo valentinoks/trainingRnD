@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Comment</title>
+    <title>Post</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
@@ -12,33 +12,31 @@
         <table class="table">
             <thead>
                 <tr>
-                <th>Movie Title</th>
-                <th>Username</th>
-                <th>Comment</th>
-                <th>Action</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Action</th>                
                 </tr>
             </thead>
             <body>
-               @foreach($comments as $comment)
+               @foreach($bioskops as $bioskop)
                <tr>
-                    <td>{{ $comment->movie->title }}</td>
-                    <td>{{ $comment->user }}</td>
-                    <td>{{ $comment->comment }}</td>
+                    <td>{{ $bioskop->name }}</td>
+                    <td>{{ $bioskop->location  }}</td>
                     <td>
-                        <form action="{{route('comment.delete', $comment->id)}}" method="POST">
+                        <form action="{{route('bioskop.delete', $bioskop->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                      </td>
                     <td>
-                        <a href="{{route('comment.edit', $comment->id)}}" class="btn btn-success">Edit</a>
+                        <a href="{{route('bioskop.edit', $bioskop->id)}}" class="btn btn-success">Edit</a>
                     </td>
                 </tr>
                @endforeach
             </body>
         </table>
-        {{ $comments->links() }}
+        {{ $bioskops->links() }}
     </div>
 </body>
 </html>

@@ -1,0 +1,19 @@
+.synopsis{
+    padding: 15px;
+    border: 1px solid salmon;
+    background: black;
+    width: 30%;
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    color: white;
+    margin-top: 30px;
+}
+
+.content{
+    background: white;
+    max-width: 30%;
+    border: 1px solid purple;
+    padding: 20px;
+    border-radius: 20px;
+}

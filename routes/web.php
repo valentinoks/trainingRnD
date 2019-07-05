@@ -32,7 +32,25 @@ Route::get('/comment/form', 'CommentController@write');
 Route::post('/comment', 'CommentController@post')->name('comment.add');
 
 Route::get('/comment/{id}', 'CommentController@edit')->name('comment.edit');
-
+ 
 Route::patch('/comment/{id}', 'CommentController@update')->name('comment.update');
 
 Route::delete('/comment/{id}', 'CommentController@delete')->name('comment.delete');
+
+Route::get('/movie/show/{id}', 'MovieController@show')->name('movie.show');
+
+//Route::get('comment/f', 'CommentController@');
+
+Route::get('/bioskop/show/{id}', 'BioskopController@show')->name('bioskop.show');
+
+Route::get('/bioskop/form', 'BioskopController@create');
+
+Route::post('/bioskop', 'BioskopController@bioskopIndex')->name('bioskop.add');// Mempersingkat link
+
+Route::get('/bioskop/{id}', 'BioskopController@edit')->name('bioskop.edit');
+
+Route::patch('/bioskop/{id}', 'BioskopController@update')->name('bioskop.update');
+
+Route::delete('/bioskop/{id}', 'BioskopController@delete')->name('bioskop.delete');
+
+Route::get('/bioskop', 'BioskopController@index');

@@ -15,6 +15,8 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('movies', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('bioskop_id')->unsigned();
+            $table->foreign('bioskop_id')->references('id')->on('bioskops')->onDeleteCascade();
             $table->string('title');
             $table->string('synopsis');
             $table->string('director');

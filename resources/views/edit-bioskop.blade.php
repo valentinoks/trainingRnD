@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create Post</title>
+    <title>Edit Post</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
@@ -18,17 +18,16 @@
             </ul>
         </div>
     @endif
-<form action="{{ route('comment.update', $comment->id) }}" method="POST">
+<form action="{{ route('bioskop.update', $bioskop->id) }}" method="POST" enctype="multipart/form-data">
 @csrf
 @method('PATCH')
-<div class="form-group">
-    <input name="user" type="text" class="form-control" value="{{$comment->user}}"
-    id="user" aria-describedby="userHelp" placeholder="Enter Username">
-</div>
+    <div class="form-group">
+    <label for="name">Name</label>
+    <input name="name" type="text" class="form-control" value="{{$bioskop->name}}" id="name" aria-describedby="titleHelp" placeholder="Enter Name">
+  </div>
   <div class="form-group">
-    <label for="comment">Comment</label>
-    <textarea name="comment" type="text" class="form-control" value="{{$comment->comment}}"
-    id="comment" aria-describedby="commentHelp" placeholder="Enter Comment"></textarea>
+    <label for="location">Location</label>
+    <input name="location" type="text" class="form-control" value="{{$bioskop->location}}" id="location" placeholder="Enter Location">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

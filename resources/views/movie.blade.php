@@ -17,6 +17,7 @@
                 <th>Director</th>
                 <th>Image</th>
                 <th>Release Date</th>
+                <th>Theatre</th>
                 <th>Action</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@
                     <img src="{{ asset('storage/images/'.$movie->image) }}" alt="" height="100" width="150">
                     </td>
                     <td>{{ $movie->dateRelease }}</td>
+                    <td>{{ $movie->bioskop->name }}</td>
                     <td>
                         <form action="{{route('movie.delete', $movie->id)}}" method="POST">
                         @csrf

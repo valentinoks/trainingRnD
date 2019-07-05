@@ -21,6 +21,14 @@
 <form action="{{ route('movie.add') }}" method="POST" enctype="multipart/form-data">
 @csrf
   <div class="form-group">
+    <label for="exampleInputEmail">Theatre</label>
+    <select name="bioskop_id" id="">
+        @foreach($bioskops as $bioskop)
+        <option value="{{$bioskop->id}}">{{$bioskop->name}}</option>
+        @endforeach
+    </select>
+  </div>
+  <div class="form-group">
     <label for="title">Title</label>
     <input name="title" type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter Title">
   </div>

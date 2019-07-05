@@ -18,24 +18,15 @@
             </ul>
         </div>
     @endif
-<form action="{{ route('comment.add') }}" method="POST">
+<form action="{{ route('bioskop.add') }}" method="POST" enctype="multipart/form-data">
 @csrf
-<div class="form-group">
-    <label for="exampleInputEmail">Movie Title</label>
-    <select name="movie_id" id="">
-        @foreach($movies as $movie)
-        <option value="{{$movie->id}}">{{$movie->title}}</option>
-        @endforeach
-    </select>
-</div>
-<div class="form-group">
-    <input name="user" type="text" class="form-control" 
-    id="user" aria-describedby="userHelp" placeholder="Enter Username">
-</div>
   <div class="form-group">
-    <label for="comment">Comment</label>
-    <textarea name="comment" type="text" class="form-control" 
-    id="comment" aria-describedby="commentHelp" placeholder="Enter Comment"></textarea>
+    <label for="name">Name</label>
+    <input name="name" type="text" class="form-control" id="name" aria-describedby="titleHelp" placeholder="Enter Name">
+  </div>
+  <div class="form-group">
+    <label for="location">Location</label>
+    <input name="location" type="text" class="form-control" id="location" placeholder="Enter Location">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

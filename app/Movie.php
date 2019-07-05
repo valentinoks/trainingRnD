@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Movie extends Model
 {
     protected $fillable = [
-        'title', 'synopsis', 'director', 'image', 'dateRelease'
+        'bioskop_id', 'title', 'synopsis', 'director', 'image', 'dateRelease', 
     ];
+
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
+
+    public function bioskop(){
+        return $this->belongsTo('App\Bioskop', 'bioskop_id');
+    }
 }

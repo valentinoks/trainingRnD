@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Bioskop;
 use App\Http\Requests\MovieRequest;
 
 class MovieController extends Controller
@@ -14,10 +15,12 @@ class MovieController extends Controller
     } //compact utk taro data posts ke view
 
     public function create(){
-        return view('form');
+        $bioskops = Bioskop::all();
+        return view('form', compact('bioskops'));
     }
     public function movieIndex(MovieRequest $request){
         Movie::create([
+            'bioskop_id'=>$request->bioskop_id,
             'title'=>$request->title,
             'synopsis'=>$request->synopsis,
             'director'=>$request->director,
@@ -56,6 +59,11 @@ class MovieController extends Controller
         Storage::delete('public/images/'.$movie->image);
         $movie->delete();
         return back()->with('success', 'Success Delete Movie Data');
+    }
+
+    public function show($id){
+        $movie= Movie::findOrFail($id);
+        return view('show-movie', compact('movie'));
     }
     
 }
